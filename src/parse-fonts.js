@@ -11,8 +11,9 @@ const parse = function (width, text) {
   });
 
   const alphabets = [];
+  const symbolCount = lines[0].length;
 
-  for (let i = 0; i < lines[0].length; i++) {
+  for (let i = 0; i < symbolCount; i++) {
     alphabets[i] = lines.map(e => e[i]);
   }
 

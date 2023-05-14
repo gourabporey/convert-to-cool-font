@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { write } = require("./src/cool-font");
+const { convertToCoolString } = require("./src/cool-font");
 const { parse } = require("./src/parse-fonts");
 
 const main = function () {
@@ -9,7 +9,7 @@ const main = function () {
 
   const alphabets = parse(+width, rawAlphabets);
 
-  console.log(write(sentence, alphabets));
+  console.log(convertToCoolString(+height, sentence, alphabets));
 }
 
 main();

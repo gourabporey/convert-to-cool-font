@@ -1,25 +1,20 @@
-const write = function (sentence, characterFonts) {
-  const characterSymbols = [
+const convertToCoolString = function (height, sentence, coolFonts) {
+  const symbols = [
     "A", "B", "C", "D", "E", "F", "G", "H", "I",
     "J", "K", "L", "M", "N", "O", "P", "Q", "R",
     "S", "T", "U", "V", "W", "X", "Y", "Z", "?"
   ];
 
-  const alphabetsLookup = {};
+  const symbolLookup = Object.fromEntries(symbols.map((symbol, i) => [symbol, coolFonts[i]]));
 
-  for (let i = 0; i < characterSymbols.length; i++) {
-    alphabetsLookup[characterSymbols[i]] = characterFonts[i];
-  }
-
-  const sentenceUsingCoolFont = sentence.split("").map(char => alphabetsLookup[char]);
+  const sentenceUsingCoolFont = sentence.split("").map(symbol => symbolLookup[symbol]);
 
   const lines = [];
-
-  for (let i = 0; i < sentenceUsingCoolFont[0].length; i++) {
+  for (let i = 0; i < height; i++) {
     lines[i] = sentenceUsingCoolFont.map(e => e[i]);
   }
 
-  return lines.map(e => e.join("")).join("\n");
+  return lines.map(line => line.join("")).join("\n");
 }
 
-exports.write = write;
+exports.write = convertToCoolString;
